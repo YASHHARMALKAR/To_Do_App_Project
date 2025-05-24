@@ -1,20 +1,23 @@
-# Use Node.js base image
+# Use a stable Node.js base image (non-Alpine to avoid native module issues)
 FROM node:18
 
-# Set working directory inside container
+# Set working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json (if exists)
+# Copy only package.json and package-lock.json for layer caching
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+# Optionally set registry (useful in CI/CD environments)
+RUN npm config set registry https://registry.npmjs.org
 
-# Copy rest of the app files
+# Install dependencies
+RUN npm install --verbose
+
+# Copy the rest of your application files
 COPY . .
 
-# Expose the port the app runs on
+# Expose the port your app runs on (adjust if needed)
 EXPOSE 3000
 
-# Start the app
-CMD ["node", "app.js"]
+# Command to run your app
+CMD ["npm", "start"]
