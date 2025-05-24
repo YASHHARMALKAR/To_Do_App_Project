@@ -16,7 +16,7 @@ pipeline {
        stage('Build Docker Image') {
         steps {
             script {
-                docker.build("node-todo-app", ".")
+                docker.build("node-todo-app", "public")
                     }
             }
         }
