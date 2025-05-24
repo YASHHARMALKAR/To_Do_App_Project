@@ -28,7 +28,7 @@ pipeline {
                     // Stop and remove previous container if exists
                     bat "docker rm -f ${CONTAINER_NAME} || true"
                     // Run new container
-                    bat "docker run -d -p 3000:3000 --name ${CONTAINER_NAME} ${IMAGE_NAME}"
+                    bat "docker run -d -p 8080:3000 --name ${CONTAINER_NAME} ${IMAGE_NAME}"
                 }
             }
         }
