@@ -13,13 +13,14 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    docker.build("${IMAGE_NAME}")
-                }
+       stage('Build Docker Image') {
+        steps {
+            script {
+                docker.build("node-todo-app", "public")
+                    }
             }
         }
+
 
         stage('Run Container') {
             steps {
