@@ -11,4 +11,4 @@ RUN npm install express
 # Expose the application port
 EXPOSE 8082
 # Command to run the application
-CMD ["node", "server.js"]
+CMD ["node", "public/server.js"]
